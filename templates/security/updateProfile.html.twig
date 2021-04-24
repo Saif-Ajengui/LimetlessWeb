@@ -1,0 +1,89 @@
+{% extends 'admin/index.html.twig' %}
+{% block body %}
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <img src="{{ asset('uploads/' ~ app.user.image ) }}" width="450px"/>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Update Account!</h1>
+
+                        </div>
+
+                        {{ form_start(f) }}
+                        <div class="form-group row">
+
+                            <div class="col-sm-6">
+                                {{ form_widget(f.nom , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Nom','required' : 'true'}}) }}
+                                {{ form_errors(f.nom)}}
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                {{ form_widget(f.prenom , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Prenom','required' : 'true'}}) }}
+                                {{ form_errors(f.prenom)}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(f.email , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Email','required' : 'true'}}) }}
+                            {{ form_errors(f.email)}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                {{ form_widget(f.login , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Login','required' : 'true'}}) }}
+                                {{ form_errors(f.login)}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_widget(f.password , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Password','required' : 'true'}}) }}
+                                {{ form_errors(f.password)}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                {{ form_widget(f.dateNaiss , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Date Naissance','required' : 'true'}}) }}
+                                {{ form_errors(f.dateNaiss)}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_widget(f.image , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Image','required' : 'true'}}) }}
+                                {{ form_errors(f.image)}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                {{ form_widget(f.sexe , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Sexe','required' : 'true'}}) }}
+                                {{ form_errors(f.sexe)}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_widget(f.type , {'attr': {'class':'form-control form-control-user', 'placeholder': 'Type','required' : 'true'}}) }}
+                                {{ form_errors(f.type)}}
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                            Update Account
+                        </button>
+                        <hr>
+                        {{ form_end(f) }}
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+{% endblock %}
