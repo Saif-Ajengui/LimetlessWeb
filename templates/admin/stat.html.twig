@@ -1,0 +1,54 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block body %}
+    <div style="margin-top:3.5%;margin-left: 10%;">
+        <div class="container-fluid row">
+            <div class="col-lg-8">
+                <div class="list-group list-group-item list-group-item-action">
+                   <h1 align="center">Nombre des clients </h1><br>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        console.log("debut");
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"
+                }
+            });
+        } );
+        console.log("fin");
+
+        //chart
+        const labels = ['nombre Client'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: "Nombre des j'aime",
+                backgroundColor: 'rgb(250, 206, 116)',
+                borderColor: 'rgb(250, 206, 116)',
+                data: {{ nbclient|raw }}
+              
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data,
+            options: {}
+        };
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+{% endblock %}
