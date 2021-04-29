@@ -64,7 +64,7 @@ class User implements UserInterface
     private $sexe;
 
     /**
-     * @ORM\Column(name="Date_naiss", type="string", length=10, nullable=false)
+     * @ORM\Column(name="Date_naiss", type="date")
 
      */
     private $dateNaiss;
@@ -74,6 +74,11 @@ class User implements UserInterface
 
      */
     private $type;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @ORM\Column(name="isvalider", type="boolean", nullable=false)
@@ -193,17 +198,19 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getDateNaiss(): ?string
+
+    public function getDateNaiss(): ?\DateTimeInterface
     {
         return $this->dateNaiss;
     }
 
-    public function setDateNaiss(string $dateNaiss): self
+
+    public function setDateNaiss( \DateTimeInterface $dateNaiss): void
     {
         $this->dateNaiss = $dateNaiss;
-
-        return $this;
     }
+
+
 
     public function getType(): ?string
     {
@@ -241,9 +248,22 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles()
+
+    public function getRoles(): array
     {
-       return ['ROLE_USER'];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+        //return ['ROLE_USER'];
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function getSalt(): ?string

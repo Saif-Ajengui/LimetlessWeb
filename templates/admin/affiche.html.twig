@@ -1,0 +1,42 @@
+{% extends 'admin/index.html.twig' %}
+{%block body%}
+    <br><br><br><br><br>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>IMAGE</th>
+                <th>NOM</th>
+                <th>PRENOM</th>
+                <th>EMAIL</th>
+                <th>SEXE</th>
+                <th>DATE DE NAISSANCE</th>
+                <th>activite</th>
+                <th>Ajouter Coach</th>
+                <th>Supprimer</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr {% for c in util %}>
+
+
+                </td>
+                <td><img src="{{ asset('uploads/' ~ c.image ) }}" style="height: 120px; width: 120px;" alt="img"></td>
+                <td>{{ c.nom }}</td>
+                <td> {{ c.prenom }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.sexe }}</td>
+                <td>{{ c.getDateNaiss() | date('d-m-Y') }}</td>
+                <td>{{ c.activite }}</td>
+
+                <td><a href="{{ path('updateRole',{'id':c.id}) }}">Ajouter</a></td>
+                <td><a href="{{ path('delete',{'id':c.id}) }}">Delete</a></td>
+
+            </tr {% endfor %}>
+
+            </tfoot>
+        </table>
+    </div>
+{%endblock%}

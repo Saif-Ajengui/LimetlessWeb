@@ -86,7 +86,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion évennements:</h6>
-                    <a class="collapse-item" href="{{ path('t') }}">Nos évennement</a>
+                    <a class="collapse-item" href="">Nos évennement</a>
                     <a class="collapse-item" href="utilities-color.html">Ajouter évennement</a>
                     <a class="collapse-item" href="utilities-border.html">Liste des participants</a>
 
@@ -123,11 +123,18 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion coach:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Liste des coach</a>
-                    <a class="collapse-item" href="utilities-border.html">Valider coach</a>
+                    <a class="collapse-item" href="{{ path('listeCoach') }}">Liste des coach</a>
+                    <a class="collapse-item" href="{{ path('afficher') }}">Valider coach</a>
 
                 </div>
             </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('chart') }}"
+               >
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Statistique</span>
+            </a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -161,10 +168,10 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
+                <form methode="post" action="{{ path('search') }}"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..."
                                aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
@@ -753,3 +760,7 @@
 </body>
 
 </html>
+
+{% block javascripts %}
+
+{% endblock %}

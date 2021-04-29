@@ -36,7 +36,7 @@
                                                         <li><a href="" class="text-dark"><span class="font-weight-semibold">Login :</span>{{ app.user.login }} </a></li>
                                                         <li><a href="" class="text-dark"><span class="font-weight-semibold">Email :</span> {{ app.user.email }}</a></li>
                                                         <li><a href="" class="text-dark"><span class="font-weight-semibold">Sexe :</span>{{ app.user.sexe }} </a></li>
-                                                        <li><a href="" class="text-dark"><span class="font-weight-semibold">Date De Naissance :</span> {{ app.user.dateNaiss }}</a></li>
+                                                        <li><a href="" class="text-dark"><span class="font-weight-semibold">Date De Naissance :</span> {{ app.user.getDateNaiss() | date('d-m-Y') }}</a></li>
                                                         <li><a href="" class="text-dark"><span class="font-weight-semibold">Type :</span> {{ app.user.type }}</a></li>
                                                     </ul>
                                                     <br><br>

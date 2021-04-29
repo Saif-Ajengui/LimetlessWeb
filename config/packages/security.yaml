@@ -17,9 +17,10 @@ security:
 
             provider: in_database
 
-            form_login:
-                login_path: app_login
-                check_path: app_login
+            guard:
+                authenticators:
+                    - App\Security\UsersAuthenticator
+
 
             logout:
                 path: app_logout
@@ -34,5 +35,14 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: admin_, roles: ROLE_ADMIN }
+        - { path: client_, roles: ROLE_USER }
+        - { path: coach_, roles: ROLE_COACH }
+
+    role_hierarchy:
+        ROLE_COACH: ROLE_USER
+        ROLE_ADMIN: ROLE_COACH
+
+
+
+

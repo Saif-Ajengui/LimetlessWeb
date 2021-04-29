@@ -19,6 +19,25 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function countnbClient($ch){
+        return $this->createQueryBuilder('m')
+            ->select('count(m.id)')
+            ->Where('m.type LIKE :ch')
+            ->setParameter('ch','Client')
+            ->getQuery()
+            ->getResult();
+
+    }
+    public function countnbCoach($ch1){
+        return $this->createQueryBuilder('m')
+            ->select('count(m.id)')
+            ->Where('m.type LIKE :ch')
+            ->setParameter('ch','Coach')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
