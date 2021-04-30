@@ -1,0 +1,84 @@
+{% extends 'client/index.html.twig' %}
+
+{% block body %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>Formation</h2>
+            <p>La formation permet d’acquérir de nouvelles compétences que le salarié pourra mettre à profit dans sa société actuellement mais aussi des qualifications qui pourront lui être utile dans une carrière future.  </p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+    {#
+    <form method="post" action="{{ path('formationcr') }}">
+    <label>Recherche</label>
+
+    <select name="sujet"data-width="100%">
+        <option value="Tout">Tout</option>
+        {% for f in formation %}
+
+            <option value="{{ f.sujet }}">{{ f.sujet }}</option>
+        {% endfor %}
+        <input type="submit" value="Recherche">
+    </select>
+</form>
+    #}
+
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(formS) }}
+             <div class="input-group">
+                        {{ form_row(formS.sujet, {'label': false,
+                             'attr': {'class': "span12",
+                                'placeholder': 'Chercher par Sujet'}
+
+                        }) }}
+                        <div class="input-group-append">
+
+                               <button type="submit" class="btn btn-success">Rechercher</button>
+
+                        </div>
+                    </div>
+
+            {{ form_end(formS) }}
+        </div>
+
+    </div>
+
+
+
+
+    <section id="events" class="events">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                {% for f in formation %}
+
+
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="{{ asset('assets/img/events-1.jpg')}}" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" ><a href="{{ path('detail',{'id':f.id,'s':f.sujet})}} ">{{ f.sujet }}</a></h5>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <p class="fst-italic text-center">Date : {{ f.date|date('Y-m-d') }}</p>
+
+
+
+                           </div>
+                            {# #}
+                            <p class="card-text">{{ f.description }}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Events Section -->
+{% endblock %}
+

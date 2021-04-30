@@ -1,0 +1,72 @@
+{% extends 'client/index.html.twig' %}
+
+{% block body %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>Détails de cour</h2>
+            <p>Une stratégie importante pour augmenter la mémorisation des informations est de prendre des notes pendant la lecture  La plupart du temps, il est peu efficace de recopier le texte des documents. Optez plutôt pour des résumés sous forme de mots-clés qui vous permettront de tester vos connaissances. </p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+
+    <section id="course-details" class="course-details">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <img src="{{ asset('assets/img/course-details.jpg')}}" class="img-fluid" alt="">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>{{ formationdetail.sujet }}</h3>
+                        {% if  10-part|length >0 %}
+                            <a href="{{ path('participerf',{'id':formationdetail.id,'s':formationdetail.sujet})}}" > <h4>Participer</h4></a>
+                        {% else %}
+                            <h3 style="color:red;">Formation saturer</h3>
+                        {% endif %}
+
+
+
+
+                    </div>
+
+                    <p>
+                        {{ formationdetail.description }}</p>
+                    <p>
+                        Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
+                        Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
+                        Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+
+                    <div class="course-info d-flex justify-content-between align-items-center">
+                        <h5>Coach</h5>
+                        <p><a href="#">Walter White</a></p>
+                    </div>
+
+                    <div class="course-info d-flex justify-content-between align-items-center">
+                        <h5>frais de cour</h5>
+                        <p>$165</p>
+                    </div>
+
+                    <div class="course-info d-flex justify-content-between align-items-center">
+                        <h5>Place disponnible</h5>
+                        <p>{{ 10-part|length }}</p>
+                    </div>
+
+                    <div class="course-info d-flex justify-content-between align-items-center">
+                        <h5>Date</h5>
+                        <p>{{ formationdetail.date|date('Y-m-d') }}</p>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Cource Details Section -->
+
+
+{% endblock %}

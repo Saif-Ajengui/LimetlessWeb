@@ -1,0 +1,43 @@
+{% extends 'client/index.html.twig' %}
+
+{% block body %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>Formation</h2>
+            <p>Suivre une formation continue va également permettre au collaborateur de gagner en responsabilité ainsi qu’obtenir une augmentation de salaire suite aux nouvelles compétences développées. </p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+    <section id="events" class="events">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                {% for f in mesformation %}
+
+
+                    <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="{{ asset('assets/img/events-1.jpg')}}" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{ path('courc',{'id':f.id})}}">{{ f.sujet }}</a></h5>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <p class="fst-italic text-center">Date : {{ f.date|date('Y-m-d') }}</p>
+
+
+                                </div>
+
+                                <p class="card-text">{{ f.description }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Events Section -->
+{% endblock %}
+

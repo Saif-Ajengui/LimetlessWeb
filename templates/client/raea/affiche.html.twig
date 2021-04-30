@@ -1,0 +1,72 @@
+{% extends 'client/index.html.twig' %}
+{% block title %}Hello RoutineclientController!{% endblock %}
+
+
+
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered ">
+            <thead>
+
+            <form methode="post" action="{{ path('afficherutil') }}">
+                <input type="submit" value="Retour">
+                <br>
+            </form>
+            <form methode="post" action="{{ path('afficherutil') }}">
+                <input type="submit" name="listTri" value="Tri par Duree">
+                <br>
+            </form>
+            <br>
+
+            <tr>
+                <th>ID_Tache </th>
+                <th>NOMCoach</th>
+                <th>NOMClient</th>
+                <th>NOMTache  </th>
+                <th>Avancement </th>
+                <th>Duree <br>(par heure(s))</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr {% for c in util %}>
+                <td>{{ c.idtache    }}</td>
+                <td>{{ c.nomcoach   }}</td>
+                <td>{{ c.nomclient  }}</td>
+                <td>{{ c.nomtache   }}</td>
+                <td>{{ c.avancement }}</td>
+                <td>{{ c.duree      }}</td>
+
+
+                <td><a href="{{ path('suppadmin',{'id':c.idtache}) }}"> Supprimer </a></td>
+                <td><a href="{{ path('update'   ,{'id':c.idtache}) }}"> Modifier  </a></td>
+
+
+            </tr {% endfor %}>
+            <tr>
+            </tr>
+
+
+            </tfoot>
+        </table>
+
+    </div>
+    <br>
+    <form methode="post" action="{{ path('recherche') }}">
+        <label ><h2>Chercher sur nos Routines </h2> </label>
+        <br>
+        <p>Faire la recherche selon le nom de tâche appliquée</p>
+        <input type="text" name="search">
+        <input type="submit" value="Recherche">
+        <br>
+    </form>
+
+
+    <!-- /.box-body -->
+{% endblock %}
