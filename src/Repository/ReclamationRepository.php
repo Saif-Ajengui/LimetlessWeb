@@ -19,6 +19,16 @@ class ReclamationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reclamation::class);
     }
 
+    public function findreclamationebytype($type){
+        return $this->createQueryBuilder('r')
+            ->where('r.typerec LIKE :typerec')
+            ->setParameter('typerec', '%'.$type.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
     // /**
     //  * @return Reclamation[] Returns an array of Reclamation objects
     //  */

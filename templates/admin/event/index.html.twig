@@ -1,0 +1,96 @@
+{% extends 'admin/index.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="container mt-md-5">
+        <h1 class="text-black-50">Gérer les événements</h1>
+
+        <table class="table table-striped table-hover">
+
+            <thead>
+            <tr>
+
+                    <th>
+
+                        <form methode="post" action="{{ path('recherche') }}">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control bg-light border-0 small"
+                                       placeholder="Chercher..." aria-label="Search"
+                                       aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </th>
+
+
+
+            </tr>
+            <tr>
+
+                <th><a href="{{ path('AddEvent') }}">Ajouter</a></th>
+                <th><a href="{{ path('orderByName') }}">Trier par nom</a></th>
+                <th>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTri"
+                           aria-expanded="true" aria-controls="collapseTri">
+                            <span>trier</span>
+                        </a>
+                        <div id="collapseTri" class="collapse" aria-labelledby="headingTri">
+                            <div class="bg-white py-2 collapse-inner rounded">
+
+                                <a class="collapse-item" href="{{ path('orderByName') }}">Nom</a>
+                                <a class="collapse-item" href="{{ path('orderByType') }}">Type</a>
+                                <a class="collapse-item" href="{{ path('orderByDateDeb') }}">Date Debut</a>
+                                <a class="collapse-item" href="{{ path('orderByDateFin') }}">Date fin</a>
+
+                            </div>
+                        </div>
+                    </li>
+                </th>
+            </tr>
+            <tr>
+                <th>Nom Evénement</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Nb Participant</th>
+                <th>Max Participant</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr {% for c in evenement %}>
+
+
+                <td>{{ c.nom }}</td>
+                <td> {{ c.description }}</td>
+                <td>{{ c.type }}</td>
+                <td>{{ c.getDateDeb() | date('Y-m-d') }}</td>
+                <td>{{ c.getDateFin() | date('Y-m-d') }}</td>
+                <td>{{ c.nbParticipant }}</td>
+                <td>{{ c.nbMaxParticipant }}</td>
+
+
+
+                <td><a href="{{ path('UpdateEvent',{'id_event':c.id_event}) }}">Update</a></td>
+                <td><a href="{{ path('DeleteEvent',{'id_event':c.id_event}) }}">Delete</a></td>
+                <td>
+                    <a style="width:300px" class="btn btn-primary" href="{{path('map',{'id': c.id_event})}}">Map : Location</a>
+                </td>
+
+
+            </tr {% endfor %}>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'client/index.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <h1 style="margin-top: 290px">Reclamation index</h1>
+    <form class="w-search">
+        <div class="sidebar-search">
+            <div class="input-group custom-search-form">
+                <input type="text" id="search" class="form-control" placeholder="Search">
+            </div>
+            <!-- /input-group -->
+        </div>
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="#"><span class="fa arrow"></span></a>
+                <ul style="background-color: #0b0b0b" class="nav " id="entitiesNav">
+                </ul>
+            </li>
+        </ul>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typerec</th>
+                <th>Description</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% include 'client/reclamation/reclamationajax.html.twig' %}
+        </tbody>
+        <tbody id="search">
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamation_new') }}">Create new</a>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('ajaxsearch-reclamation') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

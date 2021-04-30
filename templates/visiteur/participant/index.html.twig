@@ -1,0 +1,53 @@
+{% extends 'visiteur/index.html.twig' %}
+
+
+
+{% block body %}
+
+    <br><br><br><br><br><br>
+    <div class="container mt-md-5">
+
+
+
+        <table class="table table-striped table-hover">
+
+            <thead>
+            <tr>
+                <h1 class="text-black-60">Nos événements</h1>
+            </tr>
+            <tr>
+                <th>Nom Evénement</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Place restant</th>
+                <th>Participer</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr {% for c in evenement %}>
+
+
+                <td>{{ c.nom }}</td>
+                <td> {{ c.description }}</td>
+                <td>{{ c.type }}</td>
+                <td>{{ c.getDateDeb() | date('Y-m-d') }}</td>
+                <td>{{ c.getDateFin() | date('Y-m-d') }}</td>
+                <td>{{ c.nbMaxParticipant-c.nbParticipant }}</td>
+
+
+                <td><a href="{{ path('Add' ,{'id_event':c.id_event}) }}">Participer</a></td>
+
+                <td>
+
+                </td>
+
+
+            </tr {% endfor %}>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

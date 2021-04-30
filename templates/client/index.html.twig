@@ -45,18 +45,33 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="">Wellness</a></h1>
+        <h1 class="logo me-auto"><a href="{{ path('acceuilClient') }}">Wellness</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-                <li><a class="active" href="">Accueil</a></li>
-                <li><a href="about.html">Formations</a></li>
+                <li><a class="active" href="{{ path('acceuilClient') }}">Accueil</a></li>
+
+                <li class="dropdown"><a href="#"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{{ path('formationc') }}">Nos formation</a></li>
+                        <li><a href="{{ path('mesforma') }}">Mes formation</a></li>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="courses.html">Evennements</a></li>
-                <li><a href="trainers.html">rendez vous</a></li>
-                <li><a href="events.html">Routine</a></li>
-                <li><a href="pricing.html">Réclamation</a></li>
+                <li><a href="{{ path('rdv') }}">rendez vous</a></li>
+
+                <li class="dropdown"><a href="#"><span>Routine</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{{ path('register') }}">Routine</a></li>
+                        <li><a href="{{ path('afficherutil') }}">liste routine</a></li>
+                        <li><a href="{{ path('stats') }}">Statistique</a></li>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('reclamation_index') }}">Réclamation</a></li>
 
 
                 <li><a href="{{ path('profileClient') }}">Profile</a></li>

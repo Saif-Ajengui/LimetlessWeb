@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Participants;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -36,6 +37,18 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
+    }
+    public function findBylistparticipa($id){
+        return $this->createQueryBuilder('u')
+
+            ->where('u.idUtilisateur=:idu')
+            ->setParameter('idu','p.idclient')
+            ->select(Participants::class, 'p')
+            ->join('p.idformation','f')
+            ->addSelect('f')
+            ->where('f.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()->getResult();
     }
 
     // /**

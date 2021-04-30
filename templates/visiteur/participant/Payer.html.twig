@@ -1,0 +1,30 @@
+{% extends 'visiteur/index.html.twig' %}
+
+
+
+{% block body %}
+    <br><br><br><br><br><br>
+    <div class="row">
+
+        <div class="col-md-12">
+            <h1 class="text-black-50">Payer la participation à un événement</h1>
+
+            {{ form(form) }}
+            <button type="submit" class="btn btn-success btn-block">Payer</button>
+
+
+
+        </div>
+        <div class="col-md-6">
+
+            {% if qrCode %}
+                <img src="{{ qrCode }}" alt="qr-code">
+
+            {% endif %}
+
+
+
+        </div>
+    </div>
+
+{% endblock %}

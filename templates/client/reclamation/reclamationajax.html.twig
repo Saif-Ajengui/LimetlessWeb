@@ -1,0 +1,16 @@
+{% for reclamation in reclamations %}
+    <tr>
+        <td>{{ reclamation.id }}</td>
+        <td>{{ reclamation.typerec }}</td>
+        <td>{{ reclamation.description }}</td>
+        <td>{{ reclamation.email }}</td>
+        <td>
+            <a href="{{ path('reclamation_show', {'id': reclamation.id}) }}">show</a>
+            <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="5">no records found</td>
+    </tr>
+{% endfor %}

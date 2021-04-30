@@ -66,10 +66,11 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion formation:</h6>
-                    <a class="collapse-item" href="buttons.html">Nos formation</a>
-                    <a class="collapse-item" href="buttons.html">Ajout formation</a>
-                    <a class="collapse-item" href="buttons.html">Ajout Cour</a>
-                    <a class="collapse-item" href="buttons.html">List des participants</a>
+                    <a class="collapse-item" href="{{ path('upf') }}">Nos formation</a>
+                    <a class="collapse-item" href="{{ path('ajoutform') }}">Ajout formation</a>
+                    <a class="collapse-item" href="{{ path('ajoutcour') }}">Ajout Cour</a>
+                    <a class="collapse-item" href="{{ path('sta') }}">Statistique</a>
+
 
                 </div>
             </div>
@@ -86,9 +87,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion évennements:</h6>
-                    <a class="collapse-item" href="">Nos évennement</a>
-                    <a class="collapse-item" href="utilities-color.html">Ajouter évennement</a>
-                    <a class="collapse-item" href="utilities-border.html">Liste des participants</a>
+                    <a class="collapse-item" href="{{ path('AfficheEvent') }}">Nos évennement</a>
+                    <a class="collapse-item" href="{{ path('AddEvent') }}">Ajouter évennement</a>
+                    <a class="collapse-item" href="{{ path('AfficheParticipant') }}">Liste des participants</a>
 
                 </div>
             </div>
@@ -104,7 +105,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ path('reponse_index') }}">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Reclamation</span>
             </a>

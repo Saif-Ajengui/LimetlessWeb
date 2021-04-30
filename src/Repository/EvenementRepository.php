@@ -47,4 +47,32 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function orderByName(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('select s from App\Entity\Evenement s order by s.nom ASC');
+        return $query->getResult();
+
+    }
+
+    public function orderByType(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('select s from App\Entity\Evenement s order by s.type ASC');
+        return $query->getResult();
+
+    }
+
+    public function orderByDateDeb(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('select s from App\Entity\Evenement s order by s.dateDeb ASC');
+        return $query->getResult();
+
+    }
+
+    public function orderByDateFin(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('select s from App\Entity\Evenement s order by s.dateFin ASC');
+        return $query->getResult();
+
+    }
 }
